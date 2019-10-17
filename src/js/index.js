@@ -30,7 +30,7 @@ const controlSearch = async () => {
         renderLoader(elements.searchResults);
         // search for recipes
         await state.search.getResults();
-
+ 
         //render results
         clearLoader();
         searchView.renderResults(state.search.results)
@@ -62,6 +62,10 @@ const controlRecipe = async () => {
     //console.log(id);
     recipeView.clearRecipe();
     renderLoader(elements.recipe);
+
+    // highlighted selected
+    if (state.search) searchView.highLightSelected(id);
+
     // craete new object
     if (id) {
         state.recipe = new Recipe(id);

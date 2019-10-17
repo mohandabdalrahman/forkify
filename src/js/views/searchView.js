@@ -8,6 +8,13 @@ export const clearSearchList=()=>{
     elements.searchResPages.innerHTML='';
 }
 
+export const highLightSelected = id => {
+    document.querySelectorAll('.results__link').forEach(el => {
+        el.classList.remove('results__link--active')
+    })
+    document.querySelector(`a[href="#${id}"]`).classList.add('results__link--active');
+}
+
 const limitRecipeTitle = (title, limit = 17) => {
     const newTitle = [];
     if (title.length > limit) {
